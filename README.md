@@ -39,6 +39,12 @@ $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-
 
 $ npm i -g
 
+# Run Bot
+
+$ cd Zbin-Wabot
+
+$ bash run.sh
+
 # Yang Perlu Di Edit
 
 ~ Owner Number Di main.js Line|Baris 191
