@@ -7,27 +7,46 @@ Hai Halooo👋
 
 Berikut Cara Install Di Termux
 $ pkg update && pkg upgrade
+
 $ pkg i git
+
 $ git clone https://github.com/Zobin33/Zbin-Wabot
+
 $ cd Zbin-Wabot
+
 $ bash install.sh
 
 //Mudah Kan? 
+
 Jika Terjadi Error Anda Juga Bisa Install Semua Manual
 
 
 $ pkg update && pkg upgrade
+
 $ pkg i git nodejs libwebp ffmpeg wget tesseract
+
 $ git clone https://github.com/Zobin33/Zbin-Wabot
+
 $ cd Zbin-Wabot
+
 $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
+
 $ npm i -g
 
 # Thanks To
+
 ~ Allah | God
+
 ~ Keluarga
+
 ~ Rrull
+
+~ Dt
+
 ~ Manxx
+
 ~ Loli Protector
+
+~ Anu Team
 
 
