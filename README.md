@@ -29,7 +29,7 @@ Jika Terjadi Error Anda Juga Bisa Install Semua Manual
 
 $ pkg update && pkg upgrade
 
-$ pkg i git nodejs libwebp ffmpeg wget tesseract
+$ pkg i git nodejs libwebp ffmpeg wget tesseract toilet
 
 $ git clone https://github.com/Zobin33/Zbin-Wabot
 
