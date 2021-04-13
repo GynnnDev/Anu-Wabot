@@ -1,11 +1,16 @@
 # Zbin-Wabot
 Bot Biasa Dengan Base Mhankbarbar Dan Saya Modif Agar Sesuai Selera Saya Pribadi
+
 Untuk Sc Nya Saya Menyediakan Fitur Yaa Biasa Biasa Aja Cuma Ada Beberapa Command Yang Saya Scrap Sendiri Agar Tidak Bergantung Api Alias Ada Beberapa Fitur Tidak Menggunakan Api
+
 Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
+
 # Install
+
 Hai Halooo👋
 
 Berikut Cara Install Di Termux
+
 $ pkg update && pkg upgrade
 
 $ pkg i git
@@ -16,7 +21,8 @@ $ cd Zbin-Wabot
 
 $ bash install.sh
 
-//Mudah Kan? 
+
+Mudah Kan? 
 
 Jika Terjadi Error Anda Juga Bisa Install Semua Manual
 
@@ -36,6 +42,8 @@ $ npm i -g
 # Thanks To
 
 ~ Allah | God
+
+~ Nabi Muhammad Saw
 
 ~ Keluarga
 
