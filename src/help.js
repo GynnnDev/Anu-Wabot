@@ -45,21 +45,23 @@ _Nemuin *Bug🐞?* Ketik *${prefix}bugreport* Untuk Melaporkan Bug!_
 ├ *${prefix}dafontdown* [Url]
 ├ *${prefix}facebook* [Url]
 ├ *${prefix}instagram* [Url] [Options]
-├ *${prefix}tiktok* [Url]
-├ *${prefix}soundcloud* [Url]
+├ *${prefix}joox* [Query]
 ├ *${prefix}pinterest* [Query]
 ├ *${prefix}play* [Query] [Options]
-└ *${prefix}joox* [Query]
+└ *${prefix}googleimage* [Query]
 
 ❑ *Musik*
-├ *${prefix}joox* [Query]
-├ *${prefix}soundcloud* [Url]
+├ *${prefix}tovn*
 ├ *${prefix}ytmp3* [Url]
 ├ *${prefix}tomp3*
 └ *${prefix}play* [Query] [Options]
  
 ❒ *Searching*
 ├ *${prefix}ytsearch* [Query]
+├ *${prefix}google* [Query]
+├ *${prefix}pinterest* [Query]
+├ *${prefix}googleimage* [Query]
+├ *${prefix}quote* [Query]
 ├ *${prefix}dafontsearch* [Query]
 ├ *${prefix}preview* teks|ukuran / teks|ukuran|namafont -font
 └ *${prefix}ocr*
