@@ -39,6 +39,18 @@ $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-
 
 $ npm i -g
 
+# Yang Perlu Di Edit
+
+~ Owner Number Di main.js
+
+~ Prefix Di Main.js
+
+~ mess Di Main.js
+
+~ Help Di Help.js
+
+~ result = `` Di Main.js
+
 # Thanks To
 
 ~ Allah | God
