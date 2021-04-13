@@ -41,15 +41,15 @@ $ npm i -g
 
 # Yang Perlu Di Edit
 
-~ Owner Number Di main.js
+~ Owner Number Di main.js Line|Baris 191
 
-~ Prefix Di Main.js
+~ Prefix Di Main.js Line|Baris 97
 
-~ mess Di Main.js
+~ mess Di Main.js Line|Baris 210
 
 ~ Help Di Help.js
 
-~ result = `` Di Main.js
+~ botname Di Main.js Line|Baris 98
 
 # Thanks To
 
