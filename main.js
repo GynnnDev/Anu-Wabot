@@ -67,6 +67,10 @@ const {
   fbDown 
 } = require('./plugins/fb.js')
 
+const {
+  wikiSearch
+} = require('./plugins/wiki.js')
+
 const { 
   exec
 } = require('child_process')
@@ -95,7 +99,7 @@ const simin = JSON.parse(fs.readFileSync('./src/simi.json'))
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const chatban = JSON.parse(fs.readFileSync('./src/banchat.json'))
-prefix = 'z'
+prefix = `z`
 botname = 'Zbin-wabot'
 blocked = []
 
@@ -189,11 +193,11 @@ async function starts() {
   const copid = await covid()
 	body = (type === 'conversation' && msg.message.conversation.startsWith(prefix)) ? msg.message.conversation : (type == 'imageMessage') && msg.message.imageMessage.caption.startsWith(prefix) ? msg.message.imageMessage.caption : (type == 'videoMessage') && msg.message.videoMessage.caption.startsWith(prefix) ? msg.message.videoMessage.caption : (type == 'extendedTextMessage') && msg.message.extendedTextMessage.text.startsWith(prefix) ? msg.message.extendedTextMessage.text : ''
 	bodi = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
-			const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
+  const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
   const args = body.trim().split(/ +/).slice(1)
   const isCmd = body.startsWith(prefix)
   const botNumber = client.user.jid
-  const ownerNumber = ["6285230467582@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net"]
+  const ownerNumber = ["6285230467582@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net","6281216654518@s.whatsapp.net","6283128671683@s.whatsapp.net"]
   const arya = ["6289610916999@s.whatsapp.net"]
 	const isGroup = from.endsWith('@g.us')
 	const sender = isGroup ? msg.participant : msg.key.remoteJid
@@ -325,6 +329,19 @@ if (args.length < 1) return reply(`Ketik ${prefix}bugreport [fiturnya] [Error Ny
 teks = args.join(' ')
 reply('Terima Kasih Telah Melaporkan Bug Pada Owner, Jika Itu Sekedar Iseng Maka Akan Di Ban Oleh Bot!')
 client.sendMessage('62815150192843@s.whatsapp.net',`*Bug Report:* ${teks}`, text)
+break
+case 'wiki':
+if (args.length < 1) return reply(' Yang Mau Di Cari Apa? ')
+teks = args.join(' ')
+res = await wikiSearch(teks).catch(e => {
+return reply('_[ ! ] Error Hasil Tidak Ditemukan_') 
+}) 
+result = `❒「  *Wiki*  」
+├ *Judul :* ${res[0].judul}
+└ *Wiki :* ${res[0].wiki}`
+sendFileFromUrl(res[0].thumb, image, {quoted: msg, caption: result}).catch(e => {
+  reply(result)
+})
 break
 case 'antilink':
 if (!isGroup) return reply(mess.only.group)
@@ -1183,12 +1200,18 @@ break
 case '>':
 if (!isOwner) return
 var konsol = args.join(' ')
-function sendResult(sul) {
+function _return(sul) {
 var sat = JSON.stringify(sul, null, 2)
 var bang = util.format(sat)
 return reply(bang)
 }
+try {
 reply(util.format(eval(`;(async () => { ${konsol} })()`)))
+console.log('\x1b[1;37m>', '[', '\x1b[1;32mEXEC\x1b[1;37m', ']', time, color(">", "green"), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+} catch (e) {
+  err = String(e)
+  reply(err)
+}
 break
 case '$':
 if (!isOwner) return 
@@ -1234,17 +1257,22 @@ if (stdout) {
 reply(`${stdout}`)
 }
 })
-}
+} 
 if (bodi.startsWith('>')){
 if (!isOwner) return
 var konsol = bodi.slice(1)
-function sendResult(sul) {
+function _return(sul) {
 var sat = JSON.stringify(sul, null, 2)
 var bang = util.format(sat)
 return reply(bang)
 }
+try {
 reply(util.format(eval(`;(async () => { ${konsol} })()`)))
-if (startsWith == undefined) return
+console.log('\x1b[1;37m>', '[', '\x1b[1;32mEXEC\x1b[1;37m', ']', time, color(">", "green"), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+} catch (e) {
+  err = String(e)
+  reply(err)
+}
 } else {
 if (bodi != undefined) {
 console.log('>', '[',color('INFO','red'),']',`Message : ${bodi} From`, color(sender.split('@')[0]))
