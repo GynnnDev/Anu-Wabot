@@ -8,8 +8,11 @@ Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
 # Update News
 
 Added Wiki
+
 Added google
+
 Added googleimage
+
 Fix eval '>'
 
 # Install
