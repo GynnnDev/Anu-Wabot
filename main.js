@@ -94,6 +94,7 @@ const antilenk = JSON.parse(fs.readFileSync('./src/antilink.json'))
 const simin = JSON.parse(fs.readFileSync('./src/simi.json'))
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
+const chatban = JSON.parse(fs.readFileSync('./src/banchat.json'))
 prefix = 'z'
 botname = 'Zbin-wabot'
 blocked = []
@@ -182,11 +183,13 @@ async function starts() {
 	const from = msg.key.remoteJid
 	const type = Object.keys(msg.message)[0]
   const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-  const time = moment.tz('Asia/Jakarta').format('HH:mm DD-MM')
+  const time = moment.tz('Asia/Jakarta').format('HH:mm DD-MM') + '-2021'
+  const tanggal = moment.tz('Asia/Jakarta').format('DD-MM') + '-2021'
+  const jams = moment.tz('Asia/Jakarta').format('HH:mm')
   const copid = await covid()
 	body = (type === 'conversation' && msg.message.conversation.startsWith(prefix)) ? msg.message.conversation : (type == 'imageMessage') && msg.message.imageMessage.caption.startsWith(prefix) ? msg.message.imageMessage.caption : (type == 'videoMessage') && msg.message.videoMessage.caption.startsWith(prefix) ? msg.message.videoMessage.caption : (type == 'extendedTextMessage') && msg.message.extendedTextMessage.text.startsWith(prefix) ? msg.message.extendedTextMessage.text : ''
 	bodi = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
-			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+			const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
   const args = body.trim().split(/ +/).slice(1)
   const isCmd = body.startsWith(prefix)
   const botNumber = client.user.jid
@@ -204,6 +207,8 @@ async function starts() {
 	const isWelkom = isGroup ? welkom.includes(from) : false
 	const isNsfw = isGroup ? nsfw.includes(from) : false
 	const isOwner = ownerNumber.includes(sender)
+  const isBanChat = chatban.includes(from)
+	if (isBanChat && !isOwner) return
 	const aryanjing = arya.includes(sender)
 	const isUrl = (url) => {
 	return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
@@ -313,7 +318,7 @@ switch(command) {
 case 'help':
 case 'menu':
 case 'bantuan':
-reply(help(prefix, time, copid))
+reply(help(prefix, copid, tanggal, jams, botname))
 break
 case 'bugreport':
 if (args.length < 1) return reply(`Ketik ${prefix}bugreport [fiturnya] [Error Nya Gimana]`) 
@@ -334,6 +339,22 @@ reply('Sukses mengaktifkan mode anti link di group ini')
 antilenk.splice(from, 1)
 fs.writeFileSync('./src/antilink.json', JSON.stringify(antilenk))
 reply('Sukes menonaktifkan mode anti link di group ini')
+} else {
+reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+}
+break
+case 'banchat':
+if (!isOwner) return 
+if (args.length < 1) return reply('hmm')
+if (body.endsWith('true')) {
+if (isBanChat) return reply('Silent Mode Telah Aktif Sebelumnya')
+chatban.push(from)
+fs.writeFileSync('./src/banchat.json', JSON.stringify(chatban))
+reply('*Silent Mode True....*')
+} else if (body.endsWith('false')) {
+chatban.splice(from)
+fs.writeFileSync('./src/banchat.json', JSON.stringify(chatban))
+reply('*Silent Mode False....*')
 } else {
 reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
 }
@@ -580,9 +601,10 @@ break
 case 'tts':
 if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: msg})
 reply(mess.wait)
+bogay = body.replace(prefix, '')
 const gtts = require('./lib/gtts')(args[0])
 if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: msg})
-dtt = body.slice(9)
+dtt = bogay.slice(8)
 ranm = NumberRandom('.mp3')
 dtt.length > 600 ? reply('Textnya kebanyakan om') : gtts.save(ranm, dtt, function() {
 sendFileFromStorage(ranm, audio, {quoted: msg, mimetype: 'audio/mp4', ptt: true})
@@ -590,16 +612,15 @@ fs.unlinkSync(ranm)
 })
 break
 case 'setprefix':
-if (args.length < 1) return
 if (!isOwner) return
-teks = args.join(' ') 
+teks = args.join('') 
 prefix = teks
 reply(`_Change Prefix Success!! Prefix_ : *${prefix}*`)
 break
 case 'hidetag':
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return client.eply(mess.only.admin)
-teks = body.slice(9)
+teks = args.join(' ')
 group = await client.groupMetadata(from);
 member = group['participants']
 jids = []
@@ -757,34 +778,6 @@ reply('_[ ! ] Error Saat Memasuki Web Y2mate_')
 sendFileFromUrl(res[0].link, document, {quoted: msg, mimetype: 'audio/mp3', filename: res[0].output})
 }
 break
-case 'soundcloud':
-  if (args.length < 1) return reply('Kirim Id Soundcloud!')
-  const ID = body.slice(12)
-  reply(mess.wait)
-res = await axios.get(`https://api-rull.herokuapp.com/api/sc/dl?id=${ID}`) 
-var a = res.data.result
-hasil = `❒「  *${botname}*  」
-├ *Judul :* ${a.title}
-├ *Genre :* ${a.genre}
-├ *Format :* ${a.track_format}
-├ *Caption :* ${a.caption}
-├ *Durasi :* ${a.duration}
-├ *Like Didapat :* ${a.likes_count}
-├ *Di Upload Pada :* ${a.created_at}
-└ *ID Lagu :* ${a.id}
-`
-client.sendMessage(from, { url : a.artwork_url }, image, {caption: hasil, quoted: msg}).catch(err => {
-console.log(`Menggunakan Jalan Alternatif......`) 
-getBuffer(a.artwork_url).then((art) => {
-client.sendMessage(from, art, image, {caption: hasil, quoted: msg})
-}) 
-})
-client.sendMessage(from, { url : a.dl_link }, document, {mimetype: 'audio/mp3', filename: `${a.title}.mp3`, quoted: msg}).catch(eror => {
-getBuffer(a.dl_link).then((doku) => {
-client.sendMessage(from, doku, document, {mimetype: 'audio/mp3', filename: `${a.title}.mp3`, quoted: msg})
-}) 
-})
-break
 case 'jagokata':
 case 'quote':
 case 'quotes':
@@ -828,8 +821,10 @@ reply(mess.wait)
 nulis = encodeURIComponent(teks)
 res = await axios.get(`https://dt-04.herokuapp.com/nulis?text=${nulis}`)
 if (res.data.error) return reply(res.data.error)
-buff = Buffer.from(anu.result.split(',')[1], 'base64')
-client.sendMessage(from, buff, image, {quoted: msg, caption: mess.success})
+buff = Buffer.from(res.data.result.split(',')[1], 'base64')
+client.sendMessage(from, buff, image, {quoted: msg, caption: mess.success}).catch(e => {
+  return reply('_[ ! ] Error Gagal Dalam Mendownload Dan Mengirim File_')
+})
 break
 case 'tagall':
 if (!isGroup) return reply(mess.only.group)
@@ -1226,10 +1221,6 @@ reply(`Kirim Foto Dengan Caption *${prefix}wait* Untuk Mencari Anime Dari Foto`)
 }
 break
 default:
-if (isGroup && isAntiLink && isUrl(bodi) && !isGroupAdmins && bodi != undefined) {
-var sial = sender.split('@')[0] + "@s.whatsapp.net"
-client.groupRemove(from, [sial])
-} 
 if (isSimi && bodi != undefined){
  res = await axios.get(`https://st4rz.herokuapp.com/api/simsimi?kata=${bodi}`)
  reply(res.data.result)
@@ -1255,7 +1246,13 @@ return reply(bang)
 reply(util.format(eval(`;(async () => { ${konsol} })()`)))
 if (startsWith == undefined) return
 } else {
+if (bodi != undefined) {
 console.log('>', '[',color('INFO','red'),']',`Message : ${bodi} From`, color(sender.split('@')[0]))
+}
+if (isGroup && isAntiLink && isUrl(bodi) && !isGroupAdmins && bodi != undefined) {
+var sial = sender.split('@')[0] + "@s.whatsapp.net"
+client.groupRemove(from, [sial])
+} 
 }
 if (!bodi.startsWith('$')) return
 if (!bodi.startsWith('>')) return
