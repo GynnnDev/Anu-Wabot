@@ -49,7 +49,7 @@ $ bash run.sh
 
 ~ Owner Number Di main.js Line|Baris 191
 
-~ Prefix Di Main.js Line|Baris 97
+~ Prefix Di Main.js Line|Baris 97 Support Emot Dan Kata Kata
 
 ~ mess Di Main.js Line|Baris 210
 
