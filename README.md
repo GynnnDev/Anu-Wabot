@@ -5,6 +5,13 @@ Untuk Sc Nya Saya Menyediakan Fitur Yaa Biasa Biasa Aja Cuma Ada Beberapa Comman
 
 Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
 
+# Update News
+
+Added Wiki
+Added google
+Added googleimage
+Fix eval '>'
+
 # Install
 
 Hai Halooo👋
