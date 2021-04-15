@@ -1,19 +1,16 @@
-const help = (prefix, time, copid) => {
-	return `「  *Bot Jb*  」
+const help = (prefix, copid, tanggal, jams, botname) => {
+	return `「  *${botname}*  」
 
 *⦿ Bot Prefix :* ${prefix} 
 *⦿ Creator :* MhankBarBar
 *⦿ Recode By :* @Zxbin/GalangYn
-*⦿ Today :* ${time}
+*⦿ Today :* ${tanggal}
+*⦿ Jam :* ${jams}
 
 ❒「  *Kasus Covid-19 Indonesia*  」
 ├ *Terinfeksi :* ${copid[0].kasus}
 ├ *Kematian :* ${copid[0].kematian}
 └ *Sembuh :* ${copid[0].sembuh}
-
-
-_Nemuin *Bug🐞?* Ketik *${prefix}bugreport* Untuk Melaporkan Bug!_
-
 
 ❒ *Group Menu* 
 ├ *${prefix}setname* [text]
@@ -45,29 +42,25 @@ _Nemuin *Bug🐞?* Ketik *${prefix}bugreport* Untuk Melaporkan Bug!_
 ├ *${prefix}dafontdown* [Url]
 ├ *${prefix}facebook* [Url]
 ├ *${prefix}instagram* [Url] [Options]
-├ *${prefix}joox* [Query]
+├ *${prefix}tiktok* [Url]
+├ *${prefix}soundcloud* [Url]
 ├ *${prefix}pinterest* [Query]
 ├ *${prefix}play* [Query] [Options]
-└ *${prefix}googleimage* [Query]
+└ *${prefix}joox* [Query]
 
-❑ *Musik*
-├ *${prefix}tovn*
-├ *${prefix}ytmp3* [Url]
-├ *${prefix}tomp3*
-└ *${prefix}play* [Query] [Options]
- 
-❒ *Searching*
+❑ *Searching*
 ├ *${prefix}ytsearch* [Query]
-├ *${prefix}google* [Query]
-├ *${prefix}pinterest* [Query]
-├ *${prefix}googleimage* [Query]
-├ *${prefix}quote* [Query]
 ├ *${prefix}dafontsearch* [Query]
-├ *${prefix}preview* teks|ukuran / teks|ukuran|namafont -font
+├ *${prefix}google* [Query]
+├ *${prefix}wiki* [Query]
+├ *${prefix}quotes* [Query]
+├ *${prefix}preview* teks|ukuran 
 └ *${prefix}ocr*
 ⊷⊷⊷⊷⊷⋙᪥⋘⊶⊶⊶⊶⊶
-Tanda Kurung [] Hiraukan Contoh Penggunaan
-${prefix}play fly away
+Tanda Kurung [ ] Hiraukan Contoh :
+*${prefix}play fly away*
+
+_Nemuin *Bug🐞?* Ketik *${prefix}bugreport* Untuk Melaporkan Bug!_
 ⊷⊷⊷⊷⊷⋙᪥⋘⊶⊶⊶⊶⊶
 ⚠️JANGAN SPAM BOT INI !!..
 🏠TETAP DI RUMAH AJA DAN LAKUKAN 3M
