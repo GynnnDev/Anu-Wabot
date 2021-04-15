@@ -373,7 +373,7 @@ chatban.splice(from)
 fs.writeFileSync('./src/banchat.json', JSON.stringify(chatban))
 reply('*Silent Mode False....*')
 } else {
-reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
+reply(`Ketik ${prefix}banchat true Untuk Mengaktifkan dan false untung Menonaktifkan`)
 }
 break
 case 'modesimi':
