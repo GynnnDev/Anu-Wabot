@@ -40,9 +40,6 @@ const {
   jagoKata
 } = require('./plugins/jagokata.js')
 
-
-const galang = ''
-
 const {
   mediafireDl
 } = require('./plugins/mediafire.js')
