@@ -15,6 +15,10 @@ const {
   help
 } = require('./src/help')
 
+const {
+  newsCnn
+} = require('./plugins/cnn.js')
+
 const { 
   wait, 
   getBuffer, 
@@ -190,6 +194,7 @@ async function starts() {
   const time = moment.tz('Asia/Jakarta').format('HH:mm DD-MM') + '-2021'
   const tanggal = moment.tz('Asia/Jakarta').format('DD-MM') + '-2021'
   const jams = moment.tz('Asia/Jakarta').format('HH:mm')
+  const waktu = moment.tz('Asia/Jakarta').format('HHmmss')
   const copid = await covid()
 	body = (type === 'conversation' && msg.message.conversation.startsWith(prefix)) ? msg.message.conversation : (type == 'imageMessage') && msg.message.imageMessage.caption.startsWith(prefix) ? msg.message.imageMessage.caption : (type == 'videoMessage') && msg.message.videoMessage.caption.startsWith(prefix) ? msg.message.videoMessage.caption : (type == 'extendedTextMessage') && msg.message.extendedTextMessage.text.startsWith(prefix) ? msg.message.extendedTextMessage.text : ''
 	bodi = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
@@ -197,7 +202,7 @@ async function starts() {
   const args = body.trim().split(/ +/).slice(1)
   const isCmd = body.startsWith(prefix)
   const botNumber = client.user.jid
-  const ownerNumber = ["6285230467582@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net","6281216654518@s.whatsapp.net","6283128671683@s.whatsapp.net"]
+  const ownerNumber = ["6285230467582@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net","6281216654518@s.whatsapp.net","6283128671683@s.whatsapp.net","6285856408596@s.whatsapp.net"]
   const arya = ["6289610916999@s.whatsapp.net"]
 	const isGroup = from.endsWith('@g.us')
 	const sender = isGroup ? msg.participant : msg.key.remoteJid
@@ -1244,6 +1249,17 @@ reply(`Kirim Foto Dengan Caption *${prefix}wait* Untuk Mencari Anime Dari Foto`)
 }
 break
 default:
+if (waktu == 205300) {
+  res = await newsCnn('nasional')
+  data = res.slice(0, 5)
+  for (let a of data){
+  isi = `${a.judul}
+  
+_Info Lebih Lanjut >>_ ${a.link}`
+  buf = await getBuffer(a.thumb)
+ return client.sendMessage("13479919177-1603694135@g.us", buf, image, {caption: isi})
+  }
+}
 if (isSimi && bodi != undefined){
  res = await axios.get(`https://st4rz.herokuapp.com/api/simsimi?kata=${bodi}`)
  reply(res.data.result)
