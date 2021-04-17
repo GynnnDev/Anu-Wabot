@@ -29,8 +29,6 @@ $ git clone https://github.com/Zobin33/Zbin-Wabot
 
 $ cd Zbin-Wabot
 
-$ rm session.json //cukup 1 kali
-
 $ bash install.sh
 
 
