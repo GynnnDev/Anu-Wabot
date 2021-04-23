@@ -339,6 +339,16 @@ teks = args.join(' ')
 reply('Terima Kasih Telah Melaporkan Bug Pada Owner, Jika Itu Sekedar Iseng Maka Akan Di Ban Oleh Bot!')
 client.sendMessage('62815150192843@s.whatsapp.net',`*Bug Report:* ${teks}`, text)
 break
+case 'tovideo': // by lindow
+if ((isMedia && !msg.message.videoMessage || isTagedSticker) && args.length == 0) {
+const encmediaaa = isTagedSticker ? JSON.parse(JSON.stringify(msg).replace('quotedM','m')).message.extendedTextMessage.contextInfo : msg
+const mediaaa = await ev.downloadAndSaveMediaMessage(encmediaaa)
+a = await webp2gifFile(mediaaa)
+mp4 = await getBuffer(a.result)
+client.sendMessage(from, mp4, MessageType.video, {mimetype: 'video/mp4', filename: `stick.mp4`, quoted: msg, caption: 'success'})
+fs.unlinkSync(mediaaa)
+}
+break
 case 'wiki':
 if (args.length < 1) return reply(' Yang Mau Di Cari Apa? ')
 teks = args.join(' ')
