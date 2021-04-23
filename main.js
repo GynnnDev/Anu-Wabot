@@ -41,6 +41,10 @@ const {
 } = require('./plugins/jagokata.js')
 
 const {
+  webp2gifFile 
+} = require("./plugins/gif.js")
+
+const {
   mediafireDl
 } = require('./plugins/mediafire.js')
 
