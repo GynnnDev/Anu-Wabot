@@ -342,7 +342,7 @@ break
 case 'tovideo': // by lindow
 if ((isMedia && !msg.message.videoMessage || isTagedSticker) && args.length == 0) {
 const encmediaaa = isTagedSticker ? JSON.parse(JSON.stringify(msg).replace('quotedM','m')).message.extendedTextMessage.contextInfo : msg
-const mediaaa = await ev.downloadAndSaveMediaMessage(encmediaaa)
+const mediaaa = await client.downloadAndSaveMediaMessage(encmediaaa)
 a = await webp2gifFile(mediaaa)
 mp4 = await getBuffer(a.result)
 client.sendMessage(from, mp4, MessageType.video, {mimetype: 'video/mp4', filename: `stick.mp4`, quoted: msg, caption: 'success'})
