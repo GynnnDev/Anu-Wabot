@@ -41,6 +41,10 @@ const {
 } = require('./plugins/jagokata.js')
 
 const {
+  convertSticker
+} = require("./plugins/swm.js")
+
+const {
   webp2gifFile 
 } = require("./plugins/gif.js")
 
@@ -339,7 +343,23 @@ teks = args.join(' ')
 reply('Terima Kasih Telah Melaporkan Bug Pada Owner, Jika Itu Sekedar Iseng Maka Akan Di Ban Oleh Bot!')
 client.sendMessage('62815150192843@s.whatsapp.net',`*Bug Report:* ${teks}`, text)
 break
-case 'tovideo': // by lindow
+case 'swm':
+if (type === 'imageMessage' || isTagedImage){
+var kls = body.slice(5)
+var pack = kls.split("|")[0];
+var author = kls.split("|")[1];
+const getbuff = isTagedImage ? JSON.parse(JSON.stringify(msg).replace('quotedM','m')).message.extendedTextMessage.contextInfo : msg
+const dlfile = await client.downloadMediaMessage(getbuff)
+reply(mess.wait)
+const bas64 = `data:image/jpeg;base64,${dlfile.toString('base64')}`
+var mantap = await convertSticker(bas64, `${author}`, `${pack}`)
+var imageBuffer = new Buffer.from(mantap, 'base64');
+client.sendMessage(from, imageBuffer, MessageType.sticker, {quoted: msg})
+} else {
+reply('Format Salah!')
+}
+break
+case 'tovideo':
 if ((isMedia && !msg.message.videoMessage || isTagedSticker) && args.length == 0) {
 const encmediaaa = isTagedSticker ? JSON.parse(JSON.stringify(msg).replace('quotedM','m')).message.extendedTextMessage.contextInfo : msg
 const mediaaa = await client.downloadAndSaveMediaMessage(encmediaaa)
