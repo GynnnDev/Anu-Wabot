@@ -33,6 +33,7 @@ const help = (prefix, copid, tanggal, jams, botname) => {
 ├ *${prefix}tomp3*
 ├ *${prefix}tovn*
 ├ *${prefix}sticker*
+├ *${prefix}swm* [author]|[pack]
 ├ *${prefix}tovideo*
 ├ *${prefix}toimg*
 └ *${prefix}tts* [Text]
