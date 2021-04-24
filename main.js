@@ -100,6 +100,7 @@ const moment = require('moment-timezone')
 const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg')
 const util = require('util')
+const brainly = require('brainly-scraper')
 const axios = require('axios')
 const cheerio = require('cheerio') 
 const googleImage = require('g-i-s')
@@ -343,6 +344,16 @@ teks = args.join(' ')
 reply('Terima Kasih Telah Melaporkan Bug Pada Owner, Jika Itu Sekedar Iseng Maka Akan Di Ban Oleh Bot!')
 client.sendMessage('62815150192843@s.whatsapp.net',`*Bug Report:* ${teks}`, text)
 break
+case 'brainly':
+brainly(args.join(" ")).then(res => {
+hmm = '────────────\n'
+for (let Y of res.data) {
+hmm += `\n*「 _BRAINLY_ 」*\n\n*➸ Pertanyaan:* ${Y.pertanyaan}\n\n*➸ Jawaban:* ${Y.jawaban[0].text}\n───────────\n`
+}
+reply(hmm)
+console.log(res)
+})
+break 
 case 'swm':
 if (type === 'imageMessage' || isTagedImage){
 var kls = body.slice(5)
