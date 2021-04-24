@@ -52,6 +52,7 @@ const help = (prefix, copid, tanggal, jams, botname) => {
 
 ❑ *Searching*
 ├ *${prefix}ytsearch* [Query]
+├ *${prefix}brainly* [Query]
 ├ *${prefix}dafontsearch* [Query]
 ├ *${prefix}google* [Query]
 ├ *${prefix}wiki* [Query]
