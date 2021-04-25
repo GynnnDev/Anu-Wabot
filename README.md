@@ -21,13 +21,9 @@ Fix eval '>'
 ## Termux
 ```cmd
 $ pkg update && pkg upgrade
-
 $ pkg i git
-
 $ git clone https://github.com/Zobin33/Zbin-Wabot
-
 $ cd Zbin-Wabot
-
 $ bash install.sh
 
 Scan QR
@@ -36,15 +32,10 @@ Scan QR
 ## Manual Install (Termux)
 ```cmd
 $ pkg update && pkg upgrade
-
 $ pkg i git nodejs libwebp ffmpeg wget tesseract toilet
-
 $ git clone https://github.com/Zobin33/Zbin-Wabot
-
 $ cd Zbin-Wabot
-
 $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
-
 $ npm i -g
 ```
 
@@ -55,18 +46,14 @@ $ npm i -g
 * [`Download Git`](https://git-scm.com/downloads)
 ```cmd
 > git clone https://github.com/Zobin33/Zbin-Wabot
-
 > cd Zbin-Wabot
-
 > wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
-
 > npm i -g
 ```
 
 # Run Bot
 ```cmd
 $ cd Zbin-Wabot
-
 $ bash run.sh
 ```
 
@@ -83,6 +70,7 @@ Help Di [`Help.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/src/help.js)
 botname Di [`Main.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/main.js) Line|Baris 98
 
 ## Thanks To
+
 * Allah | God
 * Nabi Muhammad Saw
 * Keluarga
