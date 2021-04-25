@@ -82,7 +82,7 @@ Help Di [`Help.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/src/help.js)
 
 botname Di [`Main.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/main.js) Line|Baris 98
 
-##Thanks To
+## Thanks To
 * Allah | God
 * Nabi Muhammad Saw
 * Keluarga
