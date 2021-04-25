@@ -91,6 +91,7 @@ botname Di [`Main.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/main.js) L
 * [`Rrull`](https://github.com/arl03)
 * [`Dt`](https://github.com/Dete4)
 * Manxx
+* Lindow Amamiya
 * Loli Protector
 * Anu Team
 
