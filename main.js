@@ -362,6 +362,15 @@ reply(hmm)
 console.log(res)
 })
 break
+case 'herolist':
+await herolist().then((ress) => {
+let listt = `*List hero untuk feature ${prefix}herodetail*\n\n`
+for (var i = 0; i < ress.hero.length; i++) {
+listt += '-  ' + ress.hero[i] + '\n'
+}
+reply(listt)
+})
+break
 case 'herodetail':
 res = await herodetails(body.slice(12))
 her = `*Hero details ${body.slice(12)}*
