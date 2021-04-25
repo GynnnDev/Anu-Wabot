@@ -90,9 +90,10 @@ botname Di [`Main.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/main.js) L
 * [`MhankBarBar`](https://github.com/MhankBarBar)
 * [`Rrull`](https://github.com/arl03)
 * [`Dt`](https://github.com/Dete4)
+* [`ZelfianAlfian`](https://github.com/ZelfianAlfian)
 * Manxx
 * [`Lindow Amamiya`](https://github.com/mccnlight) 
 * [`Loli Protector`](https://github.com/Arya-was) 
-* Anu Team
+* [`Anu Team`](https://chat.whatsapp.com/K6umSEzcRMV4QOq6SktBUJ) 
 
 
