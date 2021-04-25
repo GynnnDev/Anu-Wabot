@@ -62,6 +62,14 @@ const {
 } = require('./plugins/covid.js')
 
 const { 
+  herolist 
+} = require("./plugins/herolist.js")
+
+const { 
+  herodetails 
+} = require("./plugins/herodetail.js")
+
+const { 
   y2mateA,
   y2mateV
 } = require('./plugins/y2mate.js')
