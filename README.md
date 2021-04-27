@@ -8,13 +8,10 @@ Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
 
 ## Update News
 
-Added Wiki
+Added Swm
 
-Added google
+Added togif
 
-Added googleimage
-
-Fix eval '>'
 
 # Installation
 
