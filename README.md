@@ -12,6 +12,9 @@ Added Swm
 
 Added togif
 
+Added Herolist
+
+Added Hero Detail
 
 # Installation
 
