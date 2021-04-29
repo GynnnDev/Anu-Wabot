@@ -911,7 +911,7 @@ teks = args.join(' ')
 reply(mess.wait)
 res = await yts(`${teks}`)
 kant = ``
-for (let i of res.all) {
+for (let i of res.videos) {
 kant += `❒「  *${botname}*  」
 ├ *Judul :* ${i.title}
 ├ *ID Video :* ${i.videoId}
