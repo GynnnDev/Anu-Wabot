@@ -16,6 +16,8 @@ Added Herolist
 
 Added Hero Detail
 
+Fixed Yt search
+
 # Installation
 
 ## Termux
