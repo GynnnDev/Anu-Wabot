@@ -223,7 +223,7 @@ async function starts() {
   const arya = ["6289610916999@s.whatsapp.net"]
 	const isGroup = from.endsWith('@g.us')
   number = msg.participant ? msg.participant : client.user.jid
-	const sender = isGroup ? mber : msg.key.remoteJid
+	const sender = isGroup ? number : msg.key.remoteJid
 	const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
 	const groupName = isGroup ? groupMetadata.subject : ''
 	const groupId = isGroup ? groupMetadata.jid : ''
