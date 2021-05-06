@@ -11,8 +11,9 @@ const judul = $(d).find('div.thumb > a > div.thumbz > h2.jdlflm').text()
 const thumb = $(d).find('div.thumb > a > div.thumbz > img').attr('src')
 const eps = $(d).find('div.epz').text()
 const hri = $(d).find('div.epztipe').text()
+const link = $(d).find('div.thumb > a').attr('href')
 const tgl = $(d).find('div.newnime').text()
-result.push({ judul, thumb, eps, hri, tgl })
+result.push({ judul, thumb, eps, link, hri, tgl })
 })
 return result
 }
