@@ -2,7 +2,7 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 const wikiSearch = async (query) => {
-const res = await axios.get(`https://id.m.wikipedia.org/wiki/${query}`)
+const res = await axios.get(`https://id.m.wikipedia.org/w/index.php?search=${query}`)
 const $ = cheerio.load(res.data)
 const hasil = []
 let wiki = $('#mf-section-0').find('p').text()
