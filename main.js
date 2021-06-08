@@ -219,7 +219,7 @@ async function starts() {
   const args = body.trim().split(/ +/).slice(1)
   const isCmd = body.startsWith(prefix)
   const botNumber = client.user.jid
-  const ownerNumber = ["6285230467582@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net","6281216654518@s.whatsapp.net","6283128671683@s.whatsapp.net","6285856408596@s.whatsapp.net"]
+  const ownerNumber = ["6281910263857@s.whatsapp.net","62815150192843@s.whatsapp.net","6282331218665@s.whatsapp.net","6282145024224@s.whatsapp.net","6285807107404@s.whatsapp.net","62895343001883@s.whatsapp.net","6281216654518@s.whatsapp.net","6283128671683@s.whatsapp.net","6285856408596@s.whatsapp.net"]
   const arya = ["6289610916999@s.whatsapp.net"]
 	const isGroup = from.endsWith('@g.us')
   number = msg.participant ? msg.participant : client.user.jid
