@@ -491,10 +491,6 @@ const isOwner = ownerNumber.includes(sender) ? true : msg.key.fromMe ? true : fa
 if (mode == "self" && !isOwner) return
 if (mode == "maintenance" && body && !isOwner) return reply("Maaf Bot Dalam Keadaan Mode Maintenance")
 
-//Banchat To Ban Chat 
-const isBanChat = chatban.includes(from)
-if (isBanChat && !isOwner) return
-
 //Url Regex Function
 const isUrl = (url) => {
 	return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
