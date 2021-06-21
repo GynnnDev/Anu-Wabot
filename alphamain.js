@@ -100,10 +100,6 @@ const {
 } = require('remove.bg')
 
 //Json Place
-const antilenk = JSON.parse(fs.readFileSync('./src/antilink.json'))
-const simin = JSON.parse(fs.readFileSync('./src/simi.json'))
-const chatban = JSON.parse(fs.readFileSync('./src/banchat.json'))
-var welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 var welwel = []
 var nana = []
 var tebak = []
