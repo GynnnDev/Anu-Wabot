@@ -8,15 +8,7 @@ Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
 
 ## Update News
 
-Added Swm
-
-Added togif
-
-Added Herolist
-
-Added Hero Detail
-
-Fixed Yt search
+new Alpha1 Main.js
 
 # Installation
 
