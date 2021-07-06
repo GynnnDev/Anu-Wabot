@@ -50,6 +50,11 @@ $ npm i -g
 $ cd Zbin-Wabot
 $ bash run.sh
 ```
+# Run Beta Bot
+```cmd
+$ cd Zbin-Wabot
+$ node alphamain
+```
 
 # Yang Perlu Di Edit
  
