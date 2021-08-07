@@ -1,104 +1,201 @@
-const fetch = require('node-fetch')
-const spin = require('spinnies')
-const axios = require('axios')
-const moment = require('moment-timezone')
-const ffmpeg = require('fluent-ffmpeg')
 const fs = require('fs')
-const FileType = require('file-type')
-const googleImage = require('g-i-s')
-const Crypto = require('crypto')
-const fakeUa = require('fake-useragent')
-const {exec,spawn} = require('child_process')
-const { MessageType,Mimetype } = require('@adiwajshing/baileys')
-typeMsg = MessageType
+const fetch = require('node-fetch');
+const util = require('util');
+const cheerio = require('cheerio') ;
+const ytSearch = require('yt-search');
+const googleSearch = require('google-it')
+const FileType = require('file-type');
+const spin = require('spinnies');
+const axios = require('axios');
+const moment = require('moment-timezone');
+const chalk = require('chalk');
+const ffmpeg = require('fluent-ffmpeg');
+const googleImage = require('g-i-s');
+const Crypto = require('crypto');
+const fakeUa = require('fake-useragent');
+const baileys = require('@adiwajshing/baileys');
+const { exec, spawn, execSync } = require('child_process');
 
-const pad = (num) => {
+
+
+exports.Functions = class Functions {
+constructor(){
+this.ffmpeg = ffmpeg;
+this.fakeUa = fakeUa;
+this.exec = exec;
+this.spins = spin;
+this.spawn = spawn;
+this.baileys = baileys;
+this.cheerio = cheerio;
+this.moment = moment;
+this.util = util;
+this.fs = fs;
+this.fetch = fetch;
+this.axios = axios;
+this.util = util;
+this.FileType = FileType;
+this.ytSearch = ytSearch;
+this.chalk = chalk;
+}
+
+pad(num) {
 return (num < 10 ? '0' : '') + num;
 }
-const spinner = { 
-  "interval": 120,
-  "frames": [
-"🕐",
-"🕑",
-"🕒",
-"🕓",
-"🕔",
-"🕕",
-"🕖",
-"🕗",
-"🕘",
-"🕙",
-"🕚",
-"🕛"
-    ]}
-let globalSpinner;
-const getGlobalSpinner = (disableSpins = false) => {
-  if(!globalSpinner) globalSpinner = new spin({ color: 'blue', succeedColor: 'green', spinner, disableSpins});
-  return globalSpinner;
+
+logColor(text,color){
+return chalk.keyword(color)(text)
 }
-spins = getGlobalSpinner(false)
-exports.start = (id, text) => {
-	spins.add(id, {text: text})
-	}
-exports.info = (id, text) => {
-	spins.update(id, {text: text})
+
+logBgColor(text,color){
+return chalk.bgKeyword(color)(text)
 }
-exports.success = (id, text) => {
-	spins.succeed(id, {text: text})
-	}
-exports.close = (id, text) => {
-	spins.fail(id, {text: text})
-}
-exports.WAConnection = (_WAConnection) =>  {
-class WAConnection extends _WAConnection {
-		 async reply(mess, text, opt) {
-		  return await this.sendMessage(mess.key.remoteJid, text, MessageType.extendedText, { quoted:mess, ...opt})
-		  } 
-     async sendFile(jid, path, filename = '', caption = '', quoted, options = {}) {
-          let res
-	  	  let file = Buffer.isBuffer(path) ? path : /^data:.?\/.?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (res = await fetch(path, { headers: { 'User-Agent': fakeUa()}})).buffer() : fs.existsSync(path) ? fs.readFileSync(path) : typeof path === 'string' ? path : Buffer.alloc(0)
-  		  let type = await FileType.fromBuffer(file)
-  		  if (!type) {
-  		   options.asDocument = true
-  		   type = {
-           mime: 'application/octet-stream',
-           ext: '.bin'
-            }
-  		   }
-          if (res && res.status !== 200) {
-           try { throw { json: JSON.parse(file) } }
-           catch (e) { if (e.json) throw e.json }
-      }
-  		let opt = { filename, caption }
-      if (quoted) opt.quoted = quoted
-      if (!type) {
-        if (!options.asDocument && typeof file === 'string') {
-          delete opt.filename
-          delete opt.caption
-          let typeMsg = quoted ? MessageType.extendedText : MessageType.text
-          return await this.sendMessage(jid, [file, caption].join('\n\n\n').trim(), typeMsg, opt)
-        } else options.asDocument = true
-      }
-  		let mtype = ''
-      if (!options.asDocument) {
-    		if (/image/.test(type.mime)) mtype = MessageType.image
-    		else if (/video/.test(type.mime)) mtype = MessageType.video
-     		else opt.caption = filename
-     		if (/audio/.test(type.mime)) {
-    			mtype = MessageType.audio
-          if (!options.ptt) opt.mimetype = 'audio/mp4'
-    		} else if (/pdf/.test(type.ext)) { 
-          mtype = MessageType.document
-          opt.mimetype = type.mime
+
+createExif(packname, authorname, filename) {
+        if (!filename) filename = 'data'
+        const json = {
+            'sticker-pack-id': 'CreateByAqul-RemasteredByZbin',
+            'sticker-pack-name': packname,
+            'sticker-pack-publisher': authorname,
         }
-      } else {
-        mtype = MessageType.document
-        opt.mimetype = type.mime
-      }
-      delete options.asDocument
-      if (!opt.caption) delete opt.caption
-  		return await this.sendMessage(jid, file, mtype, {...opt, ...options})
-  	  }
+        let len = JSON.stringify(json).length
+        const f = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])
+        const code = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]
+        if (len > 256) {
+            len = len - 256
+            code.unshift(0x01)
+        } else {
+            code.unshift(0x00)
+        }
+        const fff = Buffer.from(code)
+        const ffff = Buffer.from(JSON.stringify(json))
+        if (len < 16) {
+            len = len.toString(16)
+            len = '0' + len
+        } else {
+            len = len.toString(16)
+        }
+        const ff = Buffer.from(len, 'hex')
+        const buffer = Buffer.concat([f, ff, fff, ffff])
+        if (!fs.existsSync('tmp')) fs.mkdirSync('tmp')
+        return fs.writeFileSync(`./tmp/${filename}.exif`, buffer)
+    }
+  
+getTime(format,date) {
+if (date){
+return moment(date).locale('id').format(format)
+} else {
+return moment.tz('Asia/Jakarta').locale('id').format(format)
+}
+}
+
+sizeName(number) {
+let SI_POSTFIXES = ["", "K", "M", "G", "T", "P", "E"]
+let tier = Math.log10(Math.abs(number)) / 3 | 0
+if(tier == 0) return number
+let postfix = SI_POSTFIXES[tier]
+let scale = Math.pow(10, tier * 3)
+let scaled = number / scale
+let formatted = scaled.toFixed(1)
+if (/\.0$/.test(formatted))
+formatted = formatted.substr(0, formatted.length - 2)
+return formatted + postfix + 'b'
+}
+
+isUrl(url) {
+	return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+}
+
+count(seconds) {
+  var hours = this.pad(Math.floor(seconds / (60*60)))
+  var minutes = this.pad(Math.floor(seconds % (60*60) / 60))
+  var seconds = this.pad(Math.floor(seconds % 60))
+return {hours,minutes,seconds}
+}
+
+metadataMsg(client,msg) {
+let chatMetadata = (pesan) => {
+let chatMeta = (mess) => {
+mess = JSON.parse(JSON.stringify(mess))
+mess.MsgRealType = Object.keys(mess.message)[0]
+mess.message = mess.MsgRealType == 'ephemeralMessage'?mess.message.ephemeralMessage.message:mess.message
+mess.type = Object.keys(mess.message)[0]
+mess.data = typeof mess.message[mess.type]== "object" ? Object.keys(mess.message[mess.type]).includes("contextInfo") ? Object.keys(mess.message[mess.type]).concat(Object.keys(mess.message[mess.type].contextInfo)) : Object.keys(mess.message[mess.type]) : Object.keys(mess.message)
+mess.StringMsg = (mess.type === baileys.MessageType.text) ? mess.message.conversation : (mess.data.includes('caption')) ? mess.message[mess.type].caption : (mess.type == baileys.MessageType.extendedText) ? mess.message[mess.type].text : (mess.type == 'buttonsResponseMessage') ? mess.message[mess.type].selectedButtonId : ''
+mess.body = mess.message[mess.type]
+mess.from = mess.key.remoteJid
+mess.isGroup = mess.from.endsWith('g.us')
+mess.sender = mess.isGroup ? mess.participant ? mess.participant : client.user.jid : mess.key.remoteJid
+mess.mentionedJid = mess.data.includes('contextInfo') && mess.data.includes('mentionedJid')? mess.message[mess.type].contextInfo.mentionedJid : false
+mess.isText = mess.type == 'conversation' || mess.type == 'extendedTextMessage'
+mess.quotedMsg = mess.data.includes('contextInfo') && mess.data.includes('quotedMessage')?{key:{remoteJid:mess.from,fromMe:mess.message[mess.type].contextInfo.participant == client.user.jid,id:mess.message[mess.type].contextInfo.stanzaId},message:mess.message[mess.type].contextInfo.quotedMessage,participant: mess.message[mess.type].contextInfo.participant}:false
+//function
+mess.downloadMsg = async(save) => {
+if (mess.isText) throw "Not A Media Message"
+let buffer = await client.downloadMediaMessage(mess)
+if (save){
+fs.writeFileSync(save,buffer)
+return {buffer,filename:save}
+}
+return {buffer}
+}
+mess.deleteMsg = async(forAll) => {
+if (forAll) return await client.deleteMessage(mess.key.remoteJid,mess.key)
+return await client.clearMessage(mess.key)
+}
+mess.loadQuotedMsg = async() => {
+if (!mess.quotedMsg) throw 'Not Quoted Message'
+return await client.loadMessage(mess.from,mess.quotedMsg.key.id)
+}
+mess.reloadMsg = async() => {
+return await client.loadMessage(mess.from,mess.key.id)
+}
+mess.resendMsg = async(jid,opt) => {
+return await client.sendMessageFromContent(jid,mess.message,opt)
+}
+return mess
+}
+let chatData = chatMeta(pesan)
+chatData.quotedMsg = chatData.quotedMsg ? chatMeta(chatData.quotedMsg):false
+return chatData
+}
+let chatData = chatMetadata(msg)
+let groupData = async()=>{
+if(!chatData.isGroup) throw 'From Is Not A Group'
+let groupMetadata = await client.groupMetadata(chatData.from)
+let groupAdmins = groupMetadata.participants.filter(res => res.isAdmin)
+let isClientAdmin = (groupMetadata.participants.find(res => res.jid == client.user.jid)).isAdmin
+return {groupMetadata,groupAdmins,isClientAdmin}
+}
+let quotedMsgData = async() => {
+if (!chatData.quotedMsg) throw "Not Quoted Any Message"
+return chatMetadata(await chatData.loadQuotedMsg())
+}
+return {...chatData,groupData,quotedMsgData}
+}
+
+async searchImage(query) {
+return new Promise(async (resolve,reject) => {
+res = await googleImage(query,resultImage)
+function resultImage(error,result) {
+if (error) reject(error)
+if (result) resolve(result)
+}
+})
+}
+
+async delay(ms) {
+ return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async googleSearch(query) {
+return googleSearch({query,})
+}
+
+}
+exports.WAConnection = class WAConnection extends baileys.WAConnection {
+		 async reply(mess, text, opt) {
+		  return await this.sendMessage(mess.key.remoteJid, text, baileys.MessageType.extendedText, { quoted:mess, ...opt})
+		  } 
      async downloadM(m, save) { 
       	if (!m) return Buffer.alloc(0) 	
       	if (!m.message) m.message = { m }	 
@@ -115,12 +212,8 @@ class WAConnection extends _WAConnection {
         return buffer
        }
       }
-     async sendMessageFromContent(jid,obj,opt){
-     let option = {
-     contextInfo: {},
-     ...opt
-     }
-     let prepare = await this.prepareMessageFromContent(jid,obj,option)
+     async sendMessageFromContent(jid,obj,opt={}){
+     let prepare = await this.prepareMessageFromContent(jid,obj,opt)
     await this.relayWAMessage(prepare)
     return prepare
      }
@@ -200,131 +293,6 @@ resolve(result)
        } else {
        prepare = await this.prepareSticker(path)
        }
-       return await this.sendMessage(jid,prepare,MessageType.sticker,opt)
+       return await this.sendMessage(jid,prepare,baileys.MessageType.sticker,opt)
      }
     }
-return WAConnection
-}
-exports.createExif = (packname, authorname, filename) => {
-        if (!filename) filename = 'data'
-        const json = {
-            'sticker-pack-id': 'CreateByAqul-RemasteredByZbin',
-            'sticker-pack-name': packname,
-            'sticker-pack-publisher': authorname,
-        }
-        let len = JSON.stringify(json).length
-        const f = Buffer.from([0x49, 0x49, 0x2A, 0x00, 0x08, 0x00, 0x00, 0x00, 0x01, 0x00, 0x41, 0x57, 0x07, 0x00])
-        const code = [0x00, 0x00, 0x16, 0x00, 0x00, 0x00]
-        if (len > 256) {
-            len = len - 256
-            code.unshift(0x01)
-        } else {
-            code.unshift(0x00)
-        }
-        const fff = Buffer.from(code)
-        const ffff = Buffer.from(JSON.stringify(json))
-        if (len < 16) {
-            len = len.toString(16)
-            len = '0' + len
-        } else {
-            len = len.toString(16)
-        }
-        const ff = Buffer.from(len, 'hex')
-        const buffer = Buffer.concat([f, ff, fff, ffff])
-        if (!fs.existsSync('tmp')) fs.mkdirSync('tmp')
-        return fs.writeFileSync(`./tmp/${filename}.exif`, buffer)
-    }
-exports.getTime=(format)=>{
-moment.tz('Asia/Jakarta').format(format)
-}
-exports.sizeName = (number) => {
-    var SI_POSTFIXES = ["", " K", " M", " G", " T", " P", " E"]
-    var tier = Math.log10(Math.abs(number)) / 3 | 0
-    if(tier == 0) return number
-    var postfix = SI_POSTFIXES[tier]
-    var scale = Math.pow(10, tier * 3)
-    var scaled = number / scale
-    var formatted = scaled.toFixed(1) + ''
-    if (/\.0$/.test(formatted))
-      formatted = formatted.substr(0, formatted.length - 2)
-    return formatted + postfix
-}
-exports.isUrl = (url) => {
-	return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
-}
-exports.searchImage = async(query) => {
-return new Promise(async (resolve,reject) => {
-res = await googleImage(query,resultImage)
-function resultImage(error,result) {
-if (error) reject(error)
-if (result) resolve(result)
-}
-})
-}
-exports.pad = pad
-exports.count = (seconds)=>{
-  var hours = pad(Math.floor(seconds / (60*60)))
-  var minutes = pad(Math.floor(seconds % (60*60) / 60))
-  var seconds = pad(Math.floor(seconds % 60))
-return {hours,minutes,seconds}
-}
-exports.delay = (s) => {
- return new Promise(resolve => setTimeout(resolve, s * 1000))
-}
-exports.metadataMsg = (client,msg) => {
-chatMetadata = (pesan) => {
-let chatMeta = (mess) => {
-mess = JSON.parse(JSON.stringify(mess))
-mess.messageData = {}
-mess.messageData.MsgRealType = Object.keys(mess.message)[0]
-mess.message = mess.messageData.MsgRealType == 'ephemeralMessage'?mess.message.ephemeralMessage.message:mess.message
-mess.messageData.MsgType = Object.keys(mess.message)[0]
-mess.messageData.MsgData = typeof mess.message[mess.messageData.MsgType]== "object" ? Object.keys(mess.message[mess.messageData.MsgType]).includes("contextInfo") ? Object.keys(mess.message[mess.messageData.MsgType]).concat(Object.keys(mess.message[mess.messageData.MsgType].contextInfo)) : Object.keys(mess.message[mess.messageData.MsgType]) : Object.keys(mess.message)
-mess.StringMsg = (mess.messageData.MsgType === typeMsg.text) ? mess.message.conversation : (mess.messageData.MsgData.includes('caption')) ? mess.message[mess.messageData.MsgType].caption : (mess.messageData.MsgData.includes('text')) ? mess.message[mess.messageData.MsgType].text : ''
-mess.messageData.from = mess.key.remoteJid
-mess.messageData.isGroup = mess.messageData.from.endsWith('g.us')
-mess.messageData.sender = mess.messageData.isGroup ? mess.participant ? mess.participant : client.user.jid : mess.key.remoteJid
-mess.messageData.mentionedJid = mess.messageData.MsgData.includes('contextInfo') && mess.messageData.MsgData.includes('mentionedJid')? mess.message[mess.messageData.MsgType].contextInfo.mentionedJid : false
-mess.messageData.isText = mess.messageData.MsgType == 'conversation' || mess.messageData.MsgType == 'extendedTextMessage'
-mess.messageData.quotedM = mess.messageData.MsgData.includes('contextInfo') && mess.messageData.MsgData.includes('quotedMessage')?{key:{remoteJid:mess.messageData.from,fromMe:mess.message[mess.messageData.MsgType].contextInfo.participant == client.user.jid,id:mess.message[mess.messageData.MsgType].contextInfo.stanzaId},message:mess.message[mess.messageData.MsgType].contextInfo.quotedMessage,participant: mess.message[mess.messageData.MsgType].contextInfo.participants}:false
-//function
-mess.messageData.downloadM = async(save) => {
-if (mess.messageData.isText) throw "Not A Media Message"
-let buffer = await client.downloadMediaMessage(mess)
-if (save){
-fs.writeFileSync(save,buffer)
-return {buffer,filename:save}
-}
-return {buffer}
-}
-mess.messageData.deleteM = async(forAll) => {
-if (forAll) return await client.deleteMessage(mess.key.remoteJid,mess.key)
-return await client.clearMessage(mess.key)
-}
-mess.messageData.loadQuotedM = async() => {
-if (!mess.messageData.quotedM) throw 'Not Quoted Message'
-return await client.loadMessage(mess.messageData.from,mess.messageData.quotedM.key.id)
-}
-mess.messageData.resendM = async(jid,opt) => {
-return await client.sendMessageFromContent(jid,mess.message,opt)
-}
-return mess
-}
-let chatData = chatMeta(pesan)
-chatData.messageData.quotedM = chatData.messageData.quotedM ? chatMeta(chatData.messageData.quotedM):false
-return chatData
-}
-let chatData = chatMetadata(msg)
-groupData = async()=>{
-if(!chatData.messageData.isGroup) throw 'From Is Not A Group'
-let groupMetadata = await client.groupMetadata(chatData.messageData.from)
-let groupAdmins = groupMetadata.participants.filter(res => res.isAdmin)
-let isClientAdmin = (groupMetadata.participants.find(res => res.jid == client.user.jid)).isAdmin
-return {groupMetadata,groupAdmins,isClientAdmin}
-}
-quotedMsgData = async() => {
-if (!chatData.messageData.quotedM) throw "Not Quoted Any Message"
-return chatMetadata(await chatData.messageData.loadQuotedM())
-}
-return {...chatData,groupData,quotedMsgData}
-}
