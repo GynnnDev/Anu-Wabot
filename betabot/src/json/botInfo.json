@@ -1,0 +1,39 @@
+{
+  "botname": "Zbin-Wabot",
+  "ownerNumber": [
+    "6281910263857",
+    "6283128671683"
+  ],
+  "prefix": [
+    "z"
+  ],
+  "ownername": "Galang/ZbinKw",
+  "unicode": {
+    "head": "⬣",
+    "list": "⬡",
+    "body": "┃",
+    "upper": "┏",
+    "down": "┗",
+    "line": "━",
+    "wings": [
+      "𓆩 ",
+      " 𓆪"
+    ]
+  },
+  "response": {
+    "owner": "BIKIN SENDIRI MSG NYA ASW",
+    "admin": "BIKIN SENDIRI MSG NYA ASW",
+    "mods": "BIKIN SENDIRI MSG NYA ASW",
+    "premium": "BIKIN SENDIRI MSG NYA ASW",
+    "private": "BIKIN SENDIRI MSG NYA ASW",
+    "group": "BIKIN SENDIRI MSG NYA ASW",
+    "botAdmin": "BIKIN SENDIRI MSG NYA ASW"
+  },
+  "session": {
+    "clientID": "Hgfyk/M5dSCqLaQPBuNW9A==",
+    "serverToken": "1@EGTicrbmjitxGl8JGKzvLWFsaeN5iY/wkMgEKllAr0+5KAeVxcRB6syTJL+ItQHTjkOtNHL48/eVlQ==",
+    "clientToken": "40GniuL0GBWiSBFg0kxR5QSZYNaQsE5yIHhlEeAgh68=",
+    "encKey": "97r70WuxqGrjfggZwFTqvrhIHTA3h6fucV4nVXOQuqA=",
+    "macKey": "Uk2jI2jTgMZAwtvQEeU6qJ5zT9+51i5EHSGn09MbsvQ="
+  }
+}
