@@ -77,7 +77,6 @@ botname Di [`Main.js`](https://github.com/Zobin33/Anu-Wabot/blob/main/main.js) L
 * [`Rrull`](https://github.com/arl03)
 * [`Dt`](https://github.com/Dete4)
 * [`Manurios`](http://wa.me/50377257600)
-* [`ZefianAlfian`](https://github.com/ZefianAlfian)
 * [`Lindow Amamiya`](https://github.com/mccnlight) 
 * [`Loli Protector`](https://github.com/Arya-was) 
 * [`Anu Team`](https://chat.whatsapp.com/JMGFxm0SSEF9Ajm0MWJtzh) 
