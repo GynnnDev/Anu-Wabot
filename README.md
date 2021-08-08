@@ -1,14 +1,10 @@
-# Zbin-Wabot
+## Zbin-Wabot
 
-Bot Biasa Dengan Base Mhankbarbar Dan Saya Modif Agar Sesuai Selera Saya Pribadi
-
-Untuk Sc Nya Saya Menyediakan Fitur Yaa Biasa Biasa Aja Cuma Ada Beberapa Command Yang Saya Scrap Sendiri Agar Tidak Bergantung Api Alias Ada Beberapa Fitur Tidak Menggunakan Api
-
-Bot Ini Juga Bisa Menggunakan Api Seperti Bot Lain Nya
+Big Update!!🥳
 
 ## Update News
 
-new Alpha1 Main.js
+new Wabot More Complatible, Comfort, And Simple
 
 # Installation
 
