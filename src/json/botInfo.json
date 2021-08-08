@@ -30,11 +30,5 @@
     "group": "BIKIN SENDIRI MSG NYA ASW",
     "botAdmin": "BIKIN SENDIRI MSG NYA ASW"
   },
-  "session": {
-    "clientID": "Hgfyk/M5dSCqLaQPBuNW9A==",
-    "serverToken": "1@dLFSH7aK3xrRdSyx2PXnoylR6o/8VoJsO6QTetWCurUgtwRgPJoLI9/3axNCoeBqhZkSe+XQE/7Kcw==",
-    "clientToken": "9QVQHS9ZaeJ5oPHhQ7FyhIleM4Tomen88s3oAn/RM2Q=",
-    "encKey": "97r70WuxqGrjfggZwFTqvrhIHTA3h6fucV4nVXOQuqA=",
-    "macKey": "Uk2jI2jTgMZAwtvQEeU6qJ5zT9+51i5EHSGn09MbsvQ="
-  }
+  "session": null
 }
