@@ -23,7 +23,7 @@ await functions.start();
 for (let a of functions.fs.readdirSync('./command')) require(`./command/${a}`);
 await functions.delay(1000);
 functions.animate.succeed('Loading',{text:'Checking And Adding New Command Succeed'});
-await client.loadAuthInfo(botinfo.session);
+botinfo.session && await client.loadAuthInfo(botinfo.session);
 await client.connect({timeoutMs: 30000});
 }
 run();
