@@ -3,7 +3,9 @@
   "ownerNumber": [
     "6281910263857",
     "6283128671683",
-    "60138062494"
+    "60138062494",
+    "62895343001883",
+    "62895337035454"
   ],
   "prefix": [
     "z"
@@ -22,13 +24,18 @@
     ]
   },
   "response": {
-    "owner": "BIKIN SENDIRI MSG NYA ASW",
-    "admin": "BIKIN SENDIRI MSG NYA ASW",
-    "mods": "BIKIN SENDIRI MSG NYA ASW",
-    "premium": "BIKIN SENDIRI MSG NYA ASW",
-    "private": "BIKIN SENDIRI MSG NYA ASW",
-    "group": "BIKIN SENDIRI MSG NYA ASW",
-    "botAdmin": "BIKIN SENDIRI MSG NYA ASW"
+    "owner": "Khusus Owner",
+    "admin": "Khusus Admin",
+    "group": "Khusus Groun",
+    "private": "Khusus Private",
+    "notUrl": "Link Invalid",
+    "media": "Pesan Harus Media",
+    "mentioned": "Tag Orang Bang",
+    "quoted": "Tag Pesan Bang",
+    "_media": "Kirim Pesan Media Atau Tag Pesan Yang Terdapat Media",
+    "Error": "Yah Error",
+    "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
+    "botAdmin": "Bot Nya Admin Dong"
   },
   "session": null
 }
