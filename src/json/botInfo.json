@@ -32,10 +32,10 @@
     "media": "Pesan Harus Media",
     "mentioned": "Tag Orang Bang",
     "quoted": "Tag Pesan Bang",
-    "_media": "Kirim Pesan Media Atau Tag Pesan Yang Terdapat Media",
     "Error": "Yah Error",
     "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
-    "botAdmin": "Bot Nya Admin Dong"
+    "botAdmin": "Bot Nya Admin Dong",
+        "_media": "Kirim Pesan Media Atau Tag Pesan Yang Terdapat Media"
   },
   "session": null
 }
