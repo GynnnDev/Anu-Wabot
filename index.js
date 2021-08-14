@@ -20,6 +20,7 @@ run.send(process.uptime())
 break
 case 'close':
 run.kill()
+process.kill()
 break
 }
 })
