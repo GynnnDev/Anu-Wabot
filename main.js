@@ -1,5 +1,5 @@
 const { exec,execSync,spawn } = require('child_process');
-const { WAConnection, Functions }= require('./lib/functions.js');
+const { WAConnection, Functions } = require('./lib/functions.js');
 const Command = require('./lib/command.js');
 const baileys = require('@adiwajshing/baileys');
 
