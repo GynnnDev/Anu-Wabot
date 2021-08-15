@@ -9,7 +9,7 @@ cmd.on('example2',['say'],['example'],(req,{query}) => {
 cmd.on('example3',['ping'],['example'],async(req) => {
   let now = Date.now()
   await client.reply(req,'Testing Speed')
-  let calculate = functions.count(Date.now-now)
+  let calculate = Date.now-now
   let result = `Speed Response Is ${calculate}`
   return client.reply(req,result)
 });
