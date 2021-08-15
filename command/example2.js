@@ -18,5 +18,4 @@ cmd.on('example3',['ping'],['example'],async(req) => {
 Here I Describe
 ~~~~~~~~~~~~~~~
 You Can Use Callback As You Need, The Options Are Optional, Default Is usedPrefix
-
 */
