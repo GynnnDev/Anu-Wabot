@@ -6,7 +6,7 @@ return client.reply(msg,functions.util.format(evaluate));
 } catch(e){
 return client.reply(msg,functions.util.format(e));
 }
-},{owner:true,usedPrefix:false})
+},{owner:true,usedPrefix:false});
 
 cmd.on('exec',['\\$'],['owner'],async(msg,{query,commandNpref}) => {
 try{
