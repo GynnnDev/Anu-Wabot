@@ -1,7 +1,5 @@
 cmd.on('eval',['>','=>'],['owner'],async(msg,{command,text}) => {
-
 let parse = command.includes('=>') ? text.replace('=>','return ') : text.replace('>','')
-
 try{
 let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e });
 return client.reply(msg,functions.util.format(evaluate));
