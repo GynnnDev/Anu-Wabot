@@ -15,12 +15,10 @@ global.logo = { buffer:functions.fs.readFileSync('./src/images/logo.jpg'),messag
 client.logger.level = 'error';
 client.browserDescription = ['Zbin-Wabot','Desktop','3.0'];
 
-require('./lib/actionConnect.js');
-require('./lib/indexAction.js');
-
 async function run(){
 await functions.start();
 for (let a of functions.fs.readdirSync('./command')) require(`./command/${a}`);
+for (let b of functions.fs.readdirSync('./lib/actions')) require(`./lib/actions/${b}`);
 await functions.delay(1000);
 functions.animate.succeed('Loading',{text:'Checking And Adding New Command Succeed'});
 botinfo.session && await client.loadAuthInfo(botinfo.session);
