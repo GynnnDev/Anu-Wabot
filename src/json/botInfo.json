@@ -27,15 +27,16 @@
     "owner": "Khusus Owner",
     "admin": "Khusus Admin",
     "group": "Khusus Groun",
+    "wait": "Tunggu Sebentar...",
     "private": "Khusus Private",
     "notUrl": "Link Invalid",
     "media": "Pesan Harus Media",
     "mentioned": "Tag Orang Bang",
     "quoted": "Tag Pesan Bang",
+    "_media": "Kirim Pesan Media Atau Tag Pesan Yang Terdapat Media",
     "Error": "Yah Error",
     "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
-    "botAdmin": "Bot Nya Admin Dong",
-        "_media": "Kirim Pesan Media Atau Tag Pesan Yang Terdapat Media"
+    "botAdmin": "Bot Nya Admin Dong"
   },
-  "session": null
+  "session": {}
 }
