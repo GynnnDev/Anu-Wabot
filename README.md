@@ -1,10 +1,7 @@
-## Zbin-Wabot
+## Zbin-Wabot 2.0
 
-Big Update!!🥳
-
-## Update News
-
-new Wabot More Complatible, Comfort, And Simple
+More compatible, efficient, and simple.
+Using advance method to make this sc bot easy to use!
 
 # Installation
 
@@ -12,8 +9,8 @@ new Wabot More Complatible, Comfort, And Simple
 ```cmd
 $ pkg update && pkg upgrade
 $ pkg i git
-$ git clone https://github.com/Zobin33/Zbin-Wabot
-$ cd Zbin-Wabot
+$ git clone https://github.com/Zobin33/Anu-Wabot
+$ cd Anu-Wabot
 $ bash install.sh
 
 Scan QR
@@ -23,7 +20,7 @@ Scan QR
 ```cmd
 $ pkg update && pkg upgrade
 $ pkg i git nodejs libwebp ffmpeg wget tesseract toilet
-$ git clone https://github.com/Zobin33/Zbin-Wabot
+$ git clone https://github.com/Zobin33/Anu-Wabot
 $ cd Zbin-Wabot
 $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 $ npm i -g
@@ -35,7 +32,7 @@ $ npm i -g
 * [`Download Node JS`](https://nodejs.org/en/download/)
 * [`Download Git`](https://git-scm.com/downloads)
 ```cmd
-> git clone https://github.com/Zobin33/Zbin-Wabot
+> git clone https://github.com/Zobin33/Anu-Wabot
 > cd Zbin-Wabot
 > wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 > npm i -g
@@ -43,13 +40,8 @@ $ npm i -g
 
 # Run Bot
 ```cmd
-$ cd Zbin-Wabot
-$ bash run.sh
-```
-# Run Beta Bot
-```cmd
-$ cd Zbin-Wabot
-$ node alphamain
+$ cd Anu-Wabot
+$ node index.js
 ```
 
 # Yang Perlu Di Edit
@@ -66,6 +58,7 @@ Jika Ingin Ada Qr Baru session: null
 * [`Adiwajshing`](https://github.com/adiwajshing/Baileys)
 * [`Rrull`](https://github.com/arl03)
 * [`Dt`](https://github.com/Dete4)
+* [`VEXG`](https://github.com/VEXG)
 * [`Manurios`](http://wa.me/50377257600)
 * [`Lindow Amamiya`](https://github.com/mccnlight) 
 * [`Loli Protector`](https://github.com/Arya-was) 
