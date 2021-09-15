@@ -28,6 +28,7 @@ run.on('exit', code => {
 isRunning = false
 console.error('Exited with code:', code)
 if (code === 0) return
+if (code === 1) return process.kill()
 fs.watchFile(pathFile[0], () => {
 fs.unwatchFile(pathFile[0])
 start(file)
