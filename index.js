@@ -14,21 +14,20 @@ case 'reset':
 run.kill()
 isRunning = false
 start.apply(this, arguments)
-break
+break;
 case 'uptime':
 run.send(process.uptime())
-break
+break;
 case 'close':
 run.kill()
 process.kill()
-break
+break;
 }
 })
 run.on('exit', code => {
 isRunning = false
+if (code == 1) return process.kill()
 console.error('Exited with code:', code)
-if (code === 0) return
-if (code === 1) return process.kill()
 fs.watchFile(pathFile[0], () => {
 fs.unwatchFile(pathFile[0])
 start(file)
