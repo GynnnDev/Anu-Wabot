@@ -1,7 +1,9 @@
-## Zbin-Wabot 2.0
+## Zbin-Wabot 2.5.2
 
 More compatible, efficient, and simple.
 Using advance method to make this sc bot easy to use!
+
+Fixed Many Bugs
 
 # Installation
 
