@@ -24,7 +24,7 @@ client.logger.level = 'error';
 client.browserDescription = ['Zbin-Wabot','Desktop','3.0'];
 botinfo.session && await client.loadAuthInfo(botinfo.session);
 await client.connect({timeoutMs: 30000});
-} catch(e){
+} catch(e) {
 console.log(e)
 }
 }
