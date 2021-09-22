@@ -21,7 +21,15 @@
     "wings": [
       "𓆩 ",
       " 𓆪"
-    ]
+    ],
+    "needed": [
+      "<",
+      ">"
+      ],
+    "optional": [
+      "(",
+      ")"
+      ]
   },
   "response": {
     "owner": "Khusus Owner",
