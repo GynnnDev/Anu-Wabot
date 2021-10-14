@@ -21,7 +21,7 @@ Scan QR
 ## Manual Install (Termux)
 ```cmd
 $ pkg update && pkg upgrade
-$ pkg i git nodejs libwebp ffmpeg wget tesseract toilet
+$ pkg i git nodejs-lts libwebp ffmpeg wget tesseract toilet
 $ git clone https://github.com/Zobin33/Anu-Wabot
 $ cd Zbin-Wabot
 $ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
@@ -39,6 +39,8 @@ $ npm i -g
 > wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 > npm i -g
 ```
+##Warning!
+Do Not Using Nodejs 16 or up And Do Not Using Nodejs 13 or down, Use Nodejs 14!
 
 # Run Bot
 ```cmd
