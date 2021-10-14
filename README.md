@@ -39,7 +39,7 @@ $ npm i -g
 > wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 > npm i -g
 ```
-##Warning!
+## Warning!
 Do Not Using Nodejs 16 or up And Do Not Using Nodejs 13 or down, Use Nodejs 14!
 
 # Run Bot
