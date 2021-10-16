@@ -8,24 +8,9 @@ global.userDb = require('./src/json/user.json');
 global.groupDb = require('./src/json/group.json');
 global.functions = new Functions();
 global.client = new WAConnection();
-global.cmd = new Command(client, global.botinfo, global.functions);
+global.cmd = new Command(client, botinfo, functions);
 global.logo = []
 global.clients = [];
 global.used_logo = 0
 
-async function run(){
-try {
-await functions.start();
-for (let a of functions.fs.readdirSync('./lib/command')) require(`./lib/command/${a}`)
-for (let b of functions.fs.readdirSync('./lib/actions')) require(`./lib/actions/${b}`);
-await functions.delay(1000);
-functions.animate.succeed('Loading',{text:'Checking And Adding New Command Succeed'});
-client.logger.level = 'error';
-client.browserDescription = ['Zbin-Wabot','Desktop','3.0'];
-botinfo.session && await client.loadAuthInfo(botinfo.session);
-await client.connect({timeoutMs: 30000});
-} catch(e) {
-console.log(e)
-}
-}
-run();
+functions.run(client);
