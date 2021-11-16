@@ -21,22 +21,19 @@ Scan QR
 ## Manual Install (Termux)
 ```cmd
 $ pkg update && pkg upgrade
-$ pkg i git nodejs-lts libwebp ffmpeg wget tesseract toilet
+$ pkg i git nodejs-lts libwebp ffmpeg
 $ git clone https://github.com/Zobin33/Anu-Wabot
 $ cd Zbin-Wabot
-$ wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 $ npm i -g
 ```
 
 ## Windows
 * [`Download ffmpeg`](https://ffmpeg.org/download.html#build-windows) and set path
-* [`Download wget`](https://eternallybored.org/misc/wget/releases/) and set path
 * [`Download Node JS`](https://nodejs.org/en/download/)
 * [`Download Git`](https://git-scm.com/downloads)
 ```cmd
 > git clone https://github.com/Zobin33/Anu-Wabot
 > cd Zbin-Wabot
-> wget -O ~/../usr/share/tessdata/ind.traineddata "https://github.com/tesseract-ocr/tessdata/blob/master/ind.traineddata?raw=true"
 > npm i -g
 ```
 ## Warning!
