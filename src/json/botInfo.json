@@ -25,11 +25,11 @@
     "needed": [
       "<",
       ">"
-      ],
+    ],
     "optional": [
       "(",
       ")"
-      ]
+    ]
   },
   "response": {
     "owner": "Khusus Owner",
@@ -45,5 +45,12 @@
     "Error": "Yah Error",
     "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
     "botAdmin": "Bot Nya Admin Dong"
+  },
+  "session": {
+    "clientID": "xGGdHQD0PVYXluqz6tQsdg==",
+    "serverToken": "1@dkmH2+hgTNxRnU+O3u9UHtLoWk9LWDRp/Fw2jiTkiqc8WG8lRxtkSYuKyeExfZQd90TGNoDF8uLYlw==",
+    "clientToken": "LhZQoo/8ZoQhY4p1e+yt9QnRXdMj0DoCUsz1hnEzozM=",
+    "encKey": "SCHjKFS/EVEAcReUQr9bFy2+QCAIHykBS8HriBLRQUk=",
+    "macKey": "MPfcWLP0TOXdaZu7eznezxiI6kWDAJQX3wfXLfXz4yI="
   }
 }
