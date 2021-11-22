@@ -1,0 +1,35 @@
+{
+ "name": "Zbin-Wabot",
+ "version": "2.5.4",
+ "description": "Bot Wea Mudah Digunakan",
+ "main": "main.js",
+ "directories": {
+  "lib": "lib",
+  "src": "src",
+  "plugins": "plugins"
+ },
+ "scripts": {
+  "start": "node index.js"
+ },
+ "dependencies": {
+  "@adiwajshing/baileys": "^3.5.2",
+  "async": "^2.4.1",
+  "axios": "^0.21.1",
+  "qrcode": "^1.4.4",
+  "parse-ms": "*",
+  "cheerio": "^1.0.0-rc.5",
+  "escape-string-regexp": "^1.0.5",
+  "fake-useragent": "^1.0.1",
+  "file-type": "^16.5.0",
+  "fluent-ffmpeg": "^2.1.2",
+  "form-data": "^4.0.0",
+  "g-i-s": "^2.1.6",
+  "google-it": "^1.6.2",
+  "moment-timezone": "^0.5.32",
+  "node-fetch": "^2.6.1",
+  "spinnies": "^0.5.1",
+  "syntax-error": "^1.4.0",
+  "util": "^0.12.3",
+  "yt-search": "^2.7.5"
+ }
+}
