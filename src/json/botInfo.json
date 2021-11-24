@@ -2,7 +2,7 @@
   "botname": "SelfBot",
   "ownerNumber": [
     "6281515589573",
-    "0"
+    "62815155895738"
   ],
   "prefix": [
     "z"
@@ -42,6 +42,7 @@
     "Error": "Yah Error",
     "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
     "botAdmin": "Bot Nya Admin Dong"
+     
   "session":{       
         "clientID": "lokiRgDdsTMup0R8yjxFUw==",
         "serverToken": "1@+mW0STV/K3t20XZX9jGXB9P4PCBnW/Oq7vbF8SB4Z5zfU8nDUNsOIfKM+DLONZgXIVSG5+oyesMOEQ==",
