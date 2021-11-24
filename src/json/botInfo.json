@@ -1,16 +1,13 @@
 {
-  "botname": "Zbin-Wabot",
+  "botname": "SelfBot",
   "ownerNumber": [
-    "6281910263857",
-    "6283128671683",
-    "60138062494",
-    "62895343001883",
-    "62895337035454"
+    "6281515589573",
+    "0"
   ],
   "prefix": [
     "z"
   ],
-  "ownername": "Galang/ZbinKw",
+  "ownername": "Rama",
   "unicode": {
     "head": "⬣",
     "list": "⬡",
@@ -45,5 +42,12 @@
     "Error": "Yah Error",
     "fromMe": "Pesan Yang Di Balas Harus Dari Bot",
     "botAdmin": "Bot Nya Admin Dong"
+  "session":{       
+        "clientID": "lokiRgDdsTMup0R8yjxFUw==",
+        "serverToken": "1@+mW0STV/K3t20XZX9jGXB9P4PCBnW/Oq7vbF8SB4Z5zfU8nDUNsOIfKM+DLONZgXIVSG5+oyesMOEQ==",
+        "clientToken": "lvEPohtVN802nqZOdru82lx7q3o6DHIM9tpG+YrEhFg=",
+        "encKey": "H64PJUBjKjJobpMtn9kIBlLr1uhoxCyxpwa8o4vOKts=",
+        "macKey": "VhY3AiYFunbDzjZXmKSiK1eiikPQ5G1TcP8Vfw5+2qM="
+           }
   }
 }
