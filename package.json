@@ -12,13 +12,16 @@
     "start": "node index.js"
   },
   "dependencies": {
-  "@adiwajshing/baileys": "github:adiwajshing/baileys#multi-device",
+    "@adiwajshing/baileys": "github:adiwajshing/baileys#multi-device",
+    "async": "^2.4.1",
     "axios": "^0.21.1",
     "qrcode": "^1.4.4",
     "parse-ms": "*",
     "cheerio": "^1.0.0-rc.5",
+    "escape-string-regexp": "^1.0.5",
     "fake-useragent": "^1.0.1",
     "file-type": "^16.5.0",
+    "chalk":"*",
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "^4.0.0",
     "g-i-s": "^2.1.6",
