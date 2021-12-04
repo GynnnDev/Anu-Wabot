@@ -5,7 +5,7 @@ Using advance method to make this sc bot easy to use!
 
 ## Multi Device Zbin-Wabot 1.0.0
 
-[`Click Here`](https://www.github.com/Zobin33/Anu-Wabot/tree/multi-devive)
+[`Click Here`](https://www.github.com/Zobin33/Anu-Wabot/tree/multi-device)
 
 # Installation
 
