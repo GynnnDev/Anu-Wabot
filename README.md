@@ -3,7 +3,9 @@
 More compatible, efficient, and simple.
 Using advance method to make this sc bot easy to use!
 
-Fixed Many Bugs
+## Multi Device Zbin-Wabot 1.0.0
+
+[`Click Here`](https://www.github.com/Zobin33/Anu-Wabot#multi-devive)
 
 # Installation
 
