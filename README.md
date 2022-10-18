@@ -59,7 +59,7 @@ Jika Ingin Ada Qr Baru session: null
 * Nabi Muhammad Saw
 * Keluarga
 * [`Adiwajshing`](https://github.com/adiwajshing/Baileys)
-* [`Rrull`](https://github.com/arl03)
+* [`Rull`](https://github.com/rull05)
 * [`Dt`](https://github.com/Dete4)
 * [`VEXG`](https://github.com/VEXG)
 * [`Manurios`](http://wa.me/50377257600)
